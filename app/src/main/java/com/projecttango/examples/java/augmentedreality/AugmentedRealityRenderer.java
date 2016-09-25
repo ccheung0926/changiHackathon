@@ -107,21 +107,53 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
         earth.setMaterial(earthMaterial);
         earth.setPosition(1, 2, -13);
         getCurrentScene().addChild(earth);
+//terminal arrows
+        Material arrowMaterial = new Material();
+        try {
+            Texture t = new Texture("arrow", R.drawable.arrow2);
+            arrowMaterial.addTexture(t);
+        } catch (ATexture.TextureException e) {
+            Log.e(TAG, "Exception generating earth texture", e);
+        }
+        arrowMaterial.setColorInfluence(0);
+        arrowMaterial.enableLighting(true);
+        arrowMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+        Object3D arrow = new Plane(2,5,1,1);
+        arrow.setMaterial(arrowMaterial);
+        arrow.setPosition(0,-3, -15);
+        arrow.rotate(Vector3.Axis.X,80);
+        getCurrentScene().addChild(arrow);
 
-//        Material arrowMaterial = new Material();
-//        try {
-//            Texture t = new Texture("arrow", R.drawable.arrowterminal123);
-//            arrowMaterial.addTexture(t);
-//        } catch (ATexture.TextureException e) {
-//            Log.e(TAG, "Exception generating earth texture", e);
-//        }
-//        arrowMaterial.setColorInfluence(0);
-//        arrowMaterial.enableLighting(true);
-//        arrowMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
-//        Object3D arrow = new Plane(2,5,1,1);
-//        arrow.setMaterial(arrowMaterial);
-//        arrow.setPosition(0,0, -15);
-//        getCurrentScene().addChild(arrow);
+        Material terminal1Material = new Material();
+        try {
+            Texture t = new Texture("terminal1", R.drawable.terminal123);
+            terminal1Material.addTexture(t);
+        } catch (ATexture.TextureException e) {
+            Log.e(TAG, "Exception generating earth texture", e);
+        }
+        terminal1Material.setColorInfluence(0);
+        terminal1Material.enableLighting(true);
+        terminal1Material.setDiffuseMethod(new DiffuseMethod.Lambert());
+        Object3D terminal1 = new RectangularPrism(2,1,1);
+        terminal1.setMaterial(terminal1Material);
+        terminal1.setPosition(0, -4, -12);
+        getCurrentScene().addChild(terminal1);
+
+        Material arrow3Material = new Material();
+        try {
+            Texture t = new Texture("arrow3", R.drawable.arrow3);
+            arrow3Material.addTexture(t);
+        } catch (ATexture.TextureException e) {
+            Log.e(TAG, "Exception generating earth texture", e);
+        }
+        arrow3Material.setColorInfluence(0);
+        arrow3Material.enableLighting(true);
+        arrow3Material.setDiffuseMethod(new DiffuseMethod.Lambert());
+        Object3D arrow3 = new Plane(5,2,1,1);
+        arrow.setMaterial(arrowMaterial);
+        arrow.setPosition(0,7, -15);
+        arrow.rotate(Vector3.Axis.Y,85);
+        getCurrentScene().addChild(arrow);
 
         Material bathroomMaterial = new Material();
         try {
@@ -206,13 +238,13 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
 
 
         // Rotate around its Y axis, chinese restuarant rotation
-//        Animation3D animEarth = new RotateOnAxisAnimation(Vector3.Axis.Y, 0, -180);
-//        animEarth.setInterpolator(new LinearInterpolator());
-//        animEarth.setDurationMilliseconds(60000);
-//        animEarth.setRepeatMode(Animation.RepeatMode.INFINITE);
-//        animEarth.setTransformable3D(shop3);
-//        getCurrentScene().registerAnimation(animEarth);
-//        animEarth.play();
+        Animation3D animEarth = new RotateOnAxisAnimation(Vector3.Axis.Y, 0, -180);
+        animEarth.setInterpolator(new LinearInterpolator());
+        animEarth.setDurationMilliseconds(60000);
+        animEarth.setRepeatMode(Animation.RepeatMode.INFINITE);
+        animEarth.setTransformable3D(shop3);
+        getCurrentScene().registerAnimation(animEarth);
+        animEarth.play();
 
         // Create sphere with moon texture.
 //        Material moonMaterial = new Material();
