@@ -139,21 +139,21 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
         terminal1.setPosition(0, -4, -12);
         getCurrentScene().addChild(terminal1);
 
-        Material arrow3Material = new Material();
-        try {
-            Texture t = new Texture("arrow3", R.drawable.arrow3);
-            arrow3Material.addTexture(t);
-        } catch (ATexture.TextureException e) {
-            Log.e(TAG, "Exception generating earth texture", e);
-        }
-        arrow3Material.setColorInfluence(0);
-        arrow3Material.enableLighting(true);
-        arrow3Material.setDiffuseMethod(new DiffuseMethod.Lambert());
-        Object3D arrow3 = new Plane(5,2,1,1);
-        arrow.setMaterial(arrowMaterial);
-        arrow.setPosition(0,7, -15);
-        arrow.rotate(Vector3.Axis.Y,85);
-        getCurrentScene().addChild(arrow);
+//        Material arrow3Material = new Material();
+//        try {
+//            Texture t = new Texture("arrow3", R.drawable.arrow3);
+//            arrow3Material.addTexture(t);
+//        } catch (ATexture.TextureException e) {
+//            Log.e(TAG, "Exception generating earth texture", e);
+//        }
+//        arrow3Material.setColorInfluence(0);
+//        arrow3Material.enableLighting(true);
+//        arrow3Material.setDiffuseMethod(new DiffuseMethod.Lambert());
+//        Object3D arrow3 = new Plane(5,2,1,1);
+//        arrow.setMaterial(arrowMaterial);
+//        arrow.setPosition(0,7, -15);
+//        arrow.rotate(Vector3.Axis.Y,85);
+//        getCurrentScene().addChild(arrow);
 
         Material bathroomMaterial = new Material();
         try {
