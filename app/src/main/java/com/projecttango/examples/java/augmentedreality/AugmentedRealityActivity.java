@@ -34,6 +34,7 @@ import android.opengl.Matrix;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
+import android.widget.TextView;
 
 import org.rajawali3d.scene.ASceneFrameCallback;
 import org.rajawali3d.surface.RajawaliSurfaceView;
@@ -81,6 +82,8 @@ public class AugmentedRealityActivity extends Activity {
     private int mConnectedTextureIdGlThread = INVALID_TEXTURE_ID;
     private AtomicBoolean mIsFrameAvailableTangoThread = new AtomicBoolean(false);
     private double mRgbTimestampGlThread;
+    private TextView myAwesomeTextView;
+    int time = 1600;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +92,7 @@ public class AugmentedRealityActivity extends Activity {
         mSurfaceView = (RajawaliSurfaceView) findViewById(R.id.surfaceview);
         mRenderer = new AugmentedRealityRenderer(this);
         setupRenderer();
+        myAwesomeTextView = (TextView)findViewById(R.id.myAwesomeTextView);
     }
 
     @Override
@@ -197,7 +201,10 @@ public class AugmentedRealityActivity extends Activity {
     private void setTangoListeners() {
         // No need to add any coordinate frame pairs since we aren't using pose data from callbacks.
         ArrayList<TangoCoordinateFramePair> framePairs = new ArrayList<TangoCoordinateFramePair>();
-
+        // Check if the frame available is for the camera we want and update its frame
+        // on the view.
+        myAwesomeTextView.setText("Time Remaining " +time/60 + " min");
+        time--;
         mTango.connectListener(framePairs, new OnTangoUpdateListener() {
             @Override
             public void onPoseAvailable(TangoPoseData pose) {
@@ -221,8 +228,7 @@ public class AugmentedRealityActivity extends Activity {
 
             @Override
             public void onFrameAvailable(int cameraId) {
-                // Check if the frame available is for the camera we want and update its frame
-                // on the view.
+
                 if (cameraId == TangoCameraIntrinsics.TANGO_CAMERA_COLOR) {
                     // Now that we are receiving onFrameAvailable callbacks, we can switch
                     // to RENDERMODE_WHEN_DIRTY to drive the render loop from this callback.
@@ -351,13 +357,13 @@ public class AugmentedRealityActivity extends Activity {
     /**
      * Use Tango camera intrinsics to calculate the projection Matrix for the Rajawali scene.
      */
-    private static float[] projectionMatrixFromCameraIntrinsics(TangoCameraIntrinsics intrinsics) {
+    private float[] projectionMatrixFromCameraIntrinsics(TangoCameraIntrinsics intrinsics) {
         // Uses frustumM to create a projection matrix taking into account calibrated camera
         // intrinsic parameter.
         // Reference: http://ksimek.github.io/2013/06/03/calibrated_cameras_in_opengl/
+
         float near = 0.1f;
         float far = 100;
-
         float xScale = near / (float) intrinsics.fx;
         float yScale = near / (float) intrinsics.fy;
         float xOffset = (float) (intrinsics.cx - (intrinsics.width / 2.0)) * xScale;
