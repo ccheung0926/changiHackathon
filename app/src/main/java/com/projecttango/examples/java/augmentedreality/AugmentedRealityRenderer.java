@@ -63,6 +63,7 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
 
     public AugmentedRealityRenderer(Context context) {
         super(context);
+
     }
 
     @Override
@@ -348,6 +349,6 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
 
     @Override
     public void onTouchEvent(MotionEvent event) {
-
+        System.out.println("i am in the ontouchevent");
     }
 }

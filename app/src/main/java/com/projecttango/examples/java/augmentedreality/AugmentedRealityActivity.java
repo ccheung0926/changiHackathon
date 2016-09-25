@@ -33,7 +33,11 @@ import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.Surface;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.rajawali3d.scene.ASceneFrameCallback;
@@ -83,7 +87,9 @@ public class AugmentedRealityActivity extends Activity {
     private AtomicBoolean mIsFrameAvailableTangoThread = new AtomicBoolean(false);
     private double mRgbTimestampGlThread;
     private TextView myAwesomeTextView;
+    private TextView hosted_text;
     int time = 1600;
+    private RelativeLayout mLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +99,22 @@ public class AugmentedRealityActivity extends Activity {
         mRenderer = new AugmentedRealityRenderer(this);
         setupRenderer();
         myAwesomeTextView = (TextView)findViewById(R.id.myAwesomeTextView);
+        myAwesomeTextView = (TextView)findViewById(R.id.myAwesomeTextView);
+        hosted_text = (TextView)findViewById(R.id.hosted_text);
+        mLayout = (RelativeLayout) findViewById(R.id.framelayout);
+        mLayout.setOnTouchListener(mListener);
+        myAwesomeTextView.setText("Time Remaining " +time/600 + " min");
     }
+
+    private View.OnTouchListener mListener = new View.OnTouchListener() {
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            hosted_text.setText("this is super cool");
+            System.out.println("this");
+            return true;
+        }
+    };
 
     @Override
     protected void onResume() {
@@ -191,6 +212,8 @@ public class AugmentedRealityActivity extends Activity {
         // The drift corrected pose is is available through the frame pair with
         // base frame AREA_DESCRIPTION and target frame DEVICE.
         config.putBoolean(TangoConfig.KEY_BOOLEAN_DRIFT_CORRECTION, true);
+        config.putBoolean(TangoConfig.KEY_BOOLEAN_DEPTH, true);
+        config.putInt(TangoConfig.KEY_INT_DEPTH_MODE, TangoConfig.TANGO_DEPTH_MODE_POINT_CLOUD);
         return config;
     }
 
@@ -203,12 +226,11 @@ public class AugmentedRealityActivity extends Activity {
         ArrayList<TangoCoordinateFramePair> framePairs = new ArrayList<TangoCoordinateFramePair>();
         // Check if the frame available is for the camera we want and update its frame
         // on the view.
-        myAwesomeTextView.setText("Time Remaining " +time/60 + " min");
-        time--;
+        framePairs.add(new TangoCoordinateFramePair(TangoPoseData.COORDINATE_FRAME_START_OF_SERVICE,
+                TangoPoseData.COORDINATE_FRAME_DEVICE));
         mTango.connectListener(framePairs, new OnTangoUpdateListener() {
             @Override
             public void onPoseAvailable(TangoPoseData pose) {
-                // We are not using onPoseAvailable for this app.
             }
 
             @Override
@@ -218,7 +240,7 @@ public class AugmentedRealityActivity extends Activity {
 
             @Override
             public void onPointCloudAvailable(TangoPointCloudData pointCloud) {
-                // We are not using onPointCloudAvailable for this app.
+
             }
 
             @Override
