@@ -91,6 +91,12 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
         light.setPosition(3, 2, 4);
         getCurrentScene().addLight(light);
 
+        DirectionalLight light2 = new DirectionalLight(1,-5,1);
+        light2.setColor(1, 1, 1);
+        light2.setPower(1f);
+        light2.setPosition(1, 2, 1);
+        getCurrentScene().addLight(light2);
+
         // Create sphere with earth texture and place it in space 3m forward from the origin.
 //        mc donald
         Material earthMaterial = new Material();
@@ -139,21 +145,23 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
         terminal1.setPosition(0, -4, -12);
         getCurrentScene().addChild(terminal1);
 
-//        Material arrow3Material = new Material();
-//        try {
-//            Texture t = new Texture("arrow3", R.drawable.arrow3);
-//            arrow3Material.addTexture(t);
-//        } catch (ATexture.TextureException e) {
-//            Log.e(TAG, "Exception generating earth texture", e);
-//        }
-//        arrow3Material.setColorInfluence(0);
-//        arrow3Material.enableLighting(true);
-//        arrow3Material.setDiffuseMethod(new DiffuseMethod.Lambert());
-//        Object3D arrow3 = new Plane(5,2,1,1);
-//        arrow.setMaterial(arrowMaterial);
-//        arrow.setPosition(0,7, -15);
-//        arrow.rotate(Vector3.Axis.Y,85);
-//        getCurrentScene().addChild(arrow);
+//        terminal 4 5 6
+        Material arrow3Material = new Material();
+        try {
+            Texture t = new Texture("arrow3", R.drawable.arrow6);
+            arrow3Material.addTexture(t);
+        } catch (ATexture.TextureException e) {
+            Log.e(TAG, "Exception generating earth texture", e);
+        }
+        arrow3Material.setColorInfluence(0);
+        arrow3Material.enableLighting(true);
+        arrow3Material.setDiffuseMethod(new DiffuseMethod.Lambert());
+        Object3D arrow3 = new Plane(5,3,1,1);
+        arrow3.setMaterial(arrow3Material);
+        arrow3.setPosition(15,-4, -15);
+//        arrow3.rotate(Vector3.Axis.Y,90);
+//        arrow3.rotate(Vector3.Axis.X,90);
+        getCurrentScene().addChild(arrow3);
 
         Material bathroomMaterial = new Material();
         try {
