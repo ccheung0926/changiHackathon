@@ -29,9 +29,11 @@ import com.google.atap.tangoservice.TangoPoseData;
 import com.google.atap.tangoservice.TangoXyzIjData;
 
 import android.app.Activity;
+import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Surface;
@@ -39,7 +41,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.os.Vibrator;
 import org.rajawali3d.primitives.Plane;
 import org.rajawali3d.scene.ASceneFrameCallback;
 import org.rajawali3d.surface.RajawaliSurfaceView;
@@ -89,7 +91,7 @@ public class AugmentedRealityActivity extends Activity {
     private double mRgbTimestampGlThread;
     private TextView myAwesomeTextView;
     private TextView hosted_text;
-    int time = 1600;
+    int time = 300;
     private RelativeLayout mLayout;
     String helloKitty = "Reminiscent of a grand and resplendent garden blooming with lush greenery and opulent flowers amidst an elaborate and rustic setting, the Hello Kitty Orchid Garden Café is the perfect secret hideout away from the hustle and bustle of city life.";
     String changifood = "Old Chang Kee is a household name famous for it's delectable curry puffs that are filled with curried potatoes, chicken and a slice of hardboiled egg, all cooked with special herbs and spices. Other than curry puffs, Old Chang Kee also boasts spring rolls, crab claws, sotong wings amongst it's vast product range.";
@@ -104,6 +106,20 @@ public class AugmentedRealityActivity extends Activity {
         hosted_text = (TextView)findViewById(R.id.hosted_text);
         mLayout = (RelativeLayout) findViewById(R.id.framelayout);
         mLayout.setOnTouchListener(mListener);
+        myAwesomeTextView = (TextView)findViewById(R.id.myAwesomeTextView);
+        new CountDownTimer(300000,1000) {
+
+            public void onTick(long millisUntilFinished) {
+                myAwesomeTextView.setText("Minutes remaining: " + time );
+                System.out.println(time);
+                time--;
+            }
+
+            public void onFinish() {
+                myAwesomeTextView.setText("Boarding Gates are Closing!! ");
+
+            }
+        }.start();
     }
 
     private View.OnTouchListener mListener = new View.OnTouchListener() {
@@ -243,6 +259,7 @@ public class AugmentedRealityActivity extends Activity {
         mTango.connectListener(framePairs, new OnTangoUpdateListener() {
             @Override
             public void onPoseAvailable(TangoPoseData pose) {
+
             }
 
             @Override
