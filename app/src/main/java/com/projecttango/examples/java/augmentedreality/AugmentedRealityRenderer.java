@@ -103,8 +103,38 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
         earthMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
         Object3D earth = new RectangularPrism(2,2,1);
         earth.setMaterial(earthMaterial);
-        earth.setPosition(2, 2                                                           , -10);
+        earth.setPosition(2, 2, -10);
         getCurrentScene().addChild(earth);
+
+        Material arrowMaterial = new Material();
+        try {
+            Texture t = new Texture("arrow", R.drawable.arrowterminal123);
+            arrowMaterial.addTexture(t);
+        } catch (ATexture.TextureException e) {
+            Log.e(TAG, "Exception generating earth texture", e);
+        }
+        arrowMaterial.setColorInfluence(0);
+        arrowMaterial.enableLighting(true);
+        arrowMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+        Object3D arrow = new RectangularPrism(1,10,1);
+        arrow.setMaterial(arrowMaterial);
+        arrow.setPosition(0, 0, 0);
+        getCurrentScene().addChild(arrow);
+
+        Material bathroomMaterial = new Material();
+        try {
+            Texture t = new Texture("bathroom", R.drawable.bathroom);
+            bathroomMaterial.addTexture(t);
+        } catch (ATexture.TextureException e) {
+            Log.e(TAG, "Exception generating earth texture", e);
+        }
+        bathroomMaterial.setColorInfluence(0);
+        bathroomMaterial.enableLighting(true);
+        bathroomMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+        Object3D bathroom = new RectangularPrism(2,2,1);
+        bathroom.setMaterial(bathroomMaterial);
+        bathroom.setPosition(-4, 1, -50);
+        getCurrentScene().addChild(bathroom);
 
         // Rotate around its Y axis
 //        Animation3D animEarth = new RotateOnAxisAnimation(Vector3.Axis.Y, 0, -360);
