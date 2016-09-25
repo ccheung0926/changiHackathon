@@ -39,6 +39,7 @@ import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.Matrix4;
 import org.rajawali3d.math.Quaternion;
 import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.primitives.Plane;
 import org.rajawali3d.primitives.ScreenQuad;
 import org.rajawali3d.primitives.RectangularPrism;
 import org.rajawali3d.renderer.RajawaliRenderer;
@@ -91,9 +92,10 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
         getCurrentScene().addLight(light);
 
         // Create sphere with earth texture and place it in space 3m forward from the origin.
+//        mc donald
         Material earthMaterial = new Material();
         try {
-            Texture t = new Texture("earth", R.drawable.logo);
+            Texture t = new Texture("earth", R.drawable.shop4);
             earthMaterial.addTexture(t);
         } catch (ATexture.TextureException e) {
             Log.e(TAG, "Exception generating earth texture", e);
@@ -101,25 +103,25 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
         earthMaterial.setColorInfluence(0);
         earthMaterial.enableLighting(true);
         earthMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
-        Object3D earth = new RectangularPrism(2,2,1);
+        Object3D earth = new RectangularPrism(1,1,1);
         earth.setMaterial(earthMaterial);
-        earth.setPosition(2, 2, -10);
+        earth.setPosition(1, 2, -13);
         getCurrentScene().addChild(earth);
 
-        Material arrowMaterial = new Material();
-        try {
-            Texture t = new Texture("arrow", R.drawable.arrowterminal123);
-            arrowMaterial.addTexture(t);
-        } catch (ATexture.TextureException e) {
-            Log.e(TAG, "Exception generating earth texture", e);
-        }
-        arrowMaterial.setColorInfluence(0);
-        arrowMaterial.enableLighting(true);
-        arrowMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
-        Object3D arrow = new RectangularPrism(1,10,1);
-        arrow.setMaterial(arrowMaterial);
-        arrow.setPosition(0, 0, 0);
-        getCurrentScene().addChild(arrow);
+//        Material arrowMaterial = new Material();
+//        try {
+//            Texture t = new Texture("arrow", R.drawable.arrowterminal123);
+//            arrowMaterial.addTexture(t);
+//        } catch (ATexture.TextureException e) {
+//            Log.e(TAG, "Exception generating earth texture", e);
+//        }
+//        arrowMaterial.setColorInfluence(0);
+//        arrowMaterial.enableLighting(true);
+//        arrowMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+//        Object3D arrow = new Plane(2,5,1,1);
+//        arrow.setMaterial(arrowMaterial);
+//        arrow.setPosition(0,0, -15);
+//        getCurrentScene().addChild(arrow);
 
         Material bathroomMaterial = new Material();
         try {
@@ -133,15 +135,82 @@ public class AugmentedRealityRenderer extends RajawaliRenderer {
         bathroomMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
         Object3D bathroom = new RectangularPrism(2,2,1);
         bathroom.setMaterial(bathroomMaterial);
-        bathroom.setPosition(-4, 1, -50);
+        bathroom.setPosition(-8, 1, -60);
         getCurrentScene().addChild(bathroom);
 
-        // Rotate around its Y axis
-//        Animation3D animEarth = new RotateOnAxisAnimation(Vector3.Axis.Y, 0, -360);
+
+//burger king
+        Material shop1Material = new Material();
+        try {
+            Texture t = new Texture("shop1", R.drawable.shop1);
+            shop1Material.addTexture(t);
+        } catch (ATexture.TextureException e) {
+            Log.e(TAG, "Exception generating earth texture", e);
+        }
+        shop1Material.setColorInfluence(0);
+        shop1Material.enableLighting(true);
+        shop1Material.setDiffuseMethod(new DiffuseMethod.Lambert());
+        Object3D shop1 = new RectangularPrism(1,1,1);
+        shop1.setMaterial(shop1Material);
+        shop1.setPosition(-4, 1, -10);
+        getCurrentScene().addChild(shop1);
+
+//        chinese restaurant
+        Material shop3Material = new Material();
+        try {
+            Texture t = new Texture("shop3", R.drawable.shop3);
+            shop3Material.addTexture(t);
+        } catch (ATexture.TextureException e) {
+            Log.e(TAG, "Exception generating earth texture", e);
+        }
+        shop3Material.setColorInfluence(0);
+        shop3Material.enableLighting(true);
+        shop3Material.setDiffuseMethod(new DiffuseMethod.Lambert());
+        Object3D shop3 = new RectangularPrism(2,1,1);
+        shop3.setMaterial(shop3Material);
+        shop3.setPosition(-1, 1, -8);
+        getCurrentScene().addChild(shop3);
+
+//        hello kitty
+        Material shop2Material = new Material();
+        try {
+            Texture t = new Texture("shop2", R.drawable.shop2);
+            shop2Material.addTexture(t);
+        } catch (ATexture.TextureException e) {
+            Log.e(TAG, "Exception generating earth texture", e);
+        }
+        shop2Material.setColorInfluence(0);
+        shop2Material.enableLighting(true);
+        shop2Material.setDiffuseMethod(new DiffuseMethod.Lambert());
+        Object3D shop2 = new RectangularPrism(2,1,1);
+        shop2.setMaterial(shop2Material);
+        shop2.setPosition(4, 1, -13);
+        getCurrentScene().addChild(shop2);
+
+//        hackathon hashtag
+//        Material hackathonMaterial = new Material();
+//        try {
+//            Texture t = new Texture("hackathon", R.drawable.changihackathon);
+//            hackathonMaterial.addTexture(t);
+//        } catch (ATexture.TextureException e) {
+//            Log.e(TAG, "Exception generating earth texture", e);
+//        }
+//        hackathonMaterial.setColorInfluence(0);
+//        hackathonMaterial.enableLighting(true);
+//        hackathonMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
+//        Object3D hackathon = new RectangularPrism(3,2,1);
+//        hackathon.setMaterial(hackathonMaterial);
+//        hackathon.setPosition(3, 5, -13);
+//        getCurrentScene().addChild(hackathon);
+
+
+
+        // Rotate around its Y axis, chinese restuarant rotation
+//        Animation3D animEarth = new RotateOnAxisAnimation(Vector3.Axis.Y, 0, -180);
 //        animEarth.setInterpolator(new LinearInterpolator());
 //        animEarth.setDurationMilliseconds(60000);
 //        animEarth.setRepeatMode(Animation.RepeatMode.INFINITE);
-//        animEarth.setTransformable3D(earth);
+//        animEarth.setTransformable3D(shop3);
 //        getCurrentScene().registerAnimation(animEarth);
 //        animEarth.play();
 
