@@ -51,16 +51,7 @@
     <!--android:layout_gravity="top"-->
     <!--android:layout_alignParentTop="true"-->
     <!--android:textSize="20sp" />-->
-
-
-    <TextView
-        android:id="@+id/hosted_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:textColor="#FFF"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+    
 
     <!--<ImageView-->
         <!--android:id="@+id/changilogo"-->
@@ -90,6 +81,15 @@
             android:textSize="16sp"
             />
     </RelativeLayout>
-
+    <TextView
+        android:id="@+id/hosted_text"
+        android:textColor="#FFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom = "true"
+        android:textSize="18sp"
+        android:padding="20dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

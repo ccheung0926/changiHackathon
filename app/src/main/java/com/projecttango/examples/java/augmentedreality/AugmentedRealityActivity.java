@@ -40,6 +40,7 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.rajawali3d.primitives.Plane;
 import org.rajawali3d.scene.ASceneFrameCallback;
 import org.rajawali3d.surface.RajawaliSurfaceView;
 
@@ -90,7 +91,9 @@ public class AugmentedRealityActivity extends Activity {
     private TextView hosted_text;
     int time = 1600;
     private RelativeLayout mLayout;
-
+    String helloKitty = "Reminiscent of a grand and resplendent garden blooming with lush greenery and opulent flowers amidst an elaborate and rustic setting, the Hello Kitty Orchid Garden Café is the perfect secret hideout away from the hustle and bustle of city life.";
+    String changifood = "Old Chang Kee is a household name famous for it's delectable curry puffs that are filled with curried potatoes, chicken and a slice of hardboiled egg, all cooked with special herbs and spices. Other than curry puffs, Old Chang Kee also boasts spring rolls, crab claws, sotong wings amongst it's vast product range.";
+    int touch = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,20 +101,29 @@ public class AugmentedRealityActivity extends Activity {
         mSurfaceView = (RajawaliSurfaceView) findViewById(R.id.surfaceview);
         mRenderer = new AugmentedRealityRenderer(this);
         setupRenderer();
-        myAwesomeTextView = (TextView)findViewById(R.id.myAwesomeTextView);
-        myAwesomeTextView = (TextView)findViewById(R.id.myAwesomeTextView);
         hosted_text = (TextView)findViewById(R.id.hosted_text);
         mLayout = (RelativeLayout) findViewById(R.id.framelayout);
         mLayout.setOnTouchListener(mListener);
-        myAwesomeTextView.setText("Time Remaining " +time/600 + " min");
     }
 
     private View.OnTouchListener mListener = new View.OnTouchListener() {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            hosted_text.setText("this is super cool");
-            System.out.println("this");
+            System.out.println(event.getX());
+            if(event.getX()<100){
+                hosted_text.setVisibility(View.INVISIBLE);
+            }
+            if(event.getX()> 1400 && event.getX()<1700){
+                hosted_text.setVisibility(View.VISIBLE);
+                hosted_text.setText(helloKitty);
+            }
+            if(event.getX() > 600 && event.getX()<1400){
+                hosted_text.setVisibility(View.VISIBLE);
+                hosted_text.setText(changifood);
+            }
+
+            touch++;
             return true;
         }
     };
