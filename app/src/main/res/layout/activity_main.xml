@@ -54,28 +54,12 @@
 
     <TextView
         android:id="@+id/hosted_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:textColor="#FFF"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/changilogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_gravity="bottom"
         android:layout_alignParentBottom = "true"
-        android:layout_toRightOf="@+id/hosted_text"
-        android:src="@drawable/changilogo" />
-
-    <TextView
-        android:id="@+id/myAwesomeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:background="#ffffff"
-        android:textSize="16sp" />
+        android:textSize="18sp"
+        android:padding="20dp"
+        android:textStyle="bold" />
 </RelativeLayout>
