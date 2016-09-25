@@ -20,6 +20,7 @@
     android:id="@+id/framelayout"
     tools:context="com.projecttango.examples.java.augmentedreality.AugmentedRealityActivity">
 
+
     <org.rajawali3d.surface.RajawaliSurfaceView
         android:id="@+id/surfaceview"
         android:layout_width="fill_parent"
@@ -61,21 +62,34 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/changilogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom = "true"
-        android:layout_toRightOf="@+id/hosted_text"
-        android:src="@drawable/changilogo" />
+    <!--<ImageView-->
+        <!--android:id="@+id/changilogo"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_gravity="top"-->
+        <!--android:layout_alignParentTop = "true"-->
+        <!--android:layout_toRightOf="@+id/hosted_text"-->
+        <!--android:src="@drawable/changilogo" />-->
 
-    <TextView
-        android:id="@+id/myAwesomeTextView"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:background="#ffffff"
-        android:textSize="16sp" />
+        android:background="@android:color/white">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/changilogo2"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:id="@+id/myAwesomeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="#ffffff"
+            android:textSize="16sp"
+            />
+    </RelativeLayout>
+
+
 </RelativeLayout>
